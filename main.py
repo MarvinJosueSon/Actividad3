@@ -11,8 +11,6 @@ class Mascota:
 
     def Mostrar(self):
         print(f"Nombre: {self.nombre}; edad: {self.edad}; peso: {self.peso}; especie: {self.especie}")
-        print("Dueño:")
-        self.dueño.Mostrar()
 
 
 class Gato(Mascota):
@@ -189,6 +187,12 @@ def verClientes():
                     mascota.Mostrar()
             else:
                 print("No tiene mascotas registradas.")
+def verCitas():
+    if len(CitasList)>0:
+        for cita in CitasList:
+            cita.Mostrar()
+    else:
+        print("No hay citas registradas.")
 while True:
     print("== MENU ==")
     print("1. Ingresar Cliente")
@@ -208,6 +212,8 @@ while True:
             IngresarCitaMedica()
         case "4":
             verClientes()
+        case "5":
+            verCitas()
         case "6":
             print("Saliendo del sistema...")
             break
