@@ -79,8 +79,6 @@ def IngresoCliente():
             opcionAux= input("Regresar al menu principal? s/n: ").lower()
             if opcionAux == "s":
                 break
-
-
 while True:
     print("==MENU==")
     print("1. Ingresar Cliente")
