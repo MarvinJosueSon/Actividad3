@@ -63,6 +63,7 @@ def IngresoCliente():
             for cl in ClientesList:
                 if cl.cui == cuiAux:
                     existe=True
+                    break
             telefonoAux=int(input("Ingrese telefono: "))
             ClienteAux=Cliente(nombreAux,cuiAux,telefonoAux)
             if not existe:
@@ -80,6 +81,45 @@ def IngresoCliente():
             if opcionAux == "s":
                 break
 
+def IngresarMascota():
+    try:
+        existe=False
+        cuiAux=int(input("Ingrese el cui del cliente: "))
+        for cl in ClientesList:
+            if cl.cui == cuiAux:
+                existe=True
+                dueñoAux=cl
+        if existe:
+            print("1. Gato")
+            print("2. Perro")
+            print("3. Otro")
+            opcionAux=input("Seleccione el tipo de animal a ingresar: ")
+            if opcionAux == "1" or opcionAux == "2" or opcionAux == "3":
+                nombreAux=input("Ingrese el nombre de la mascota: ")
+                edadAux=int(input("Ingrese la edad de la mascota (en meses): "))
+                pesoAux=int(input("Ingrese el peso de la mascota (en libras): "))
+                if opcionAux == "1":
+                    especieAux="Gato"
+                    colorAux=input("Ingrese el color del gato: ")
+                    gatoAux=Gato(nombreAux,edadAux,pesoAux,especieAux,dueñoAux,colorAux)
+                    print("Mascota ingresada con exito")
+                elif opcionAux == "2":
+                    especieAux="Perro"
+                    razaAux=input("Ingrese la raza del perro: ")
+                    perroAux=Perro(nombreAux,edadAux,pesoAux,especieAux,dueñoAux,razaAux)
+                    print("Mascota ingresada con exito")
+                elif opcionAux == "3":
+                    especieAux="Otro"
+                    tipoAux=input("Ingrese la tipo de mascota (reptil, ave, pez, etc): ")
+                    otroAux=Otro(nombreAux,edadAux,pesoAux,especieAux,dueñoAux,tipoAux)
+                    print("Mascota ingresada con exito")
+
+            else:
+                print("Opcion no existe")
+        else:
+            print("Cliente no existe")
+    except ValueError:
+        print("ERROR: EDAD Y PESO DEBEN IR EN NUMEROS ENTEROS")
 
 while True:
     print("==MENU==")
@@ -92,3 +132,5 @@ while True:
     match opcion:
         case "1":
             IngresoCliente()
+        case "2":
+            IngresarMascota()
